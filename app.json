@@ -8,5 +8,5 @@
       "description": "The IP to bind to",
       "value": "0.0.0.0"
     }
-  },
+  }
 }
