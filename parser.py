@@ -16,30 +16,14 @@ import config
 app = Flask(__name__)
 
 
-def get_custom_filters():
-    import filters
-    custom_filters = {}
-    for m in getmembers(filters):
-        if m[0].startswith('filter_') and isfunction(m[1]):
-            filter_name = m[0][7:]
-            custom_filters[filter_name] = m[1]
-
-    return custom_filters
-
-
 @app.route("/")
 def home():
-    return render_template('index.html', custom_filters=get_custom_filters())
+    return render_template('index.html')
 
 
 @app.route('/convert', methods=['GET', 'POST'])
 def convert():
     jinja2_env = Environment()
-
-    # Load custom filters
-    custom_filters = get_custom_filters()
-    app.logger.debug('Add the following customer filters to Jinja environment: %s' % ', '.join(custom_filters.keys()))
-    jinja2_env.filters.update(custom_filters)
 
     # Load the template
     try:
