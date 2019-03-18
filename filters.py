@@ -1,3 +1,10 @@
-def filter_leetify(a, **kw):
-    """Leetify text ('a' becomes '4', 'e' becomes '3', etc.)"""
-    return a.replace('a','4').replace('e','3').replace('i','1').replace('o','0').replace('u','^')
+import ipaddress
+
+
+def filter_ipv4(ip):
+    """Validate IP address from YAML variables."""
+    try:
+        ipaddress.ip_address(ip)
+        return ip
+    except ValueError:
+        return "!!! Not valid ip address !!!"
