@@ -81,7 +81,8 @@ def convert():
         return "Error in your values input filed: {0}".format(e)
 
     if bool(int(request.form['showwhitespaces'])):
-        # Replace whitespaces with a visible character (will be grayed with javascript)
+        # Replace whitespaces with a visible character
+        # (will be grayed with javascript)
         rendered_jinja2_tpl = rendered_jinja2_tpl.replace(' ', u'•')
 
     return escape(rendered_jinja2_tpl).replace('\n', '<br />')
